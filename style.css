@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css2?family=Monda:wght@400..700&display=swap');
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.4/font/bootstrap-icons.min.css");
+
+:root {
+  color: #59432f;
+  font-family: 'monda';
+}
+
+.logo {
+  width: 300px;
+  height: 105px;
+  margin-top: 60px;
+  margin-left: 70px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-end {
+  text-align: end;
+}
+
+.margin-wide {
+  margin-top: 60px;
+}
+
+.green {
+  color: #75b726;
+}
+
+.pink {
+  color: #e6217e;
+}
+
+.dimmed {
+  color: #59432f60;
+}
+
+.btn {
+  color: #59432f;
+  font-family: 'monda';
+  background-color: white;
+  font-size: 60px;
+  border: 6px solid #59432f;
+  border-radius: 10px;
+}
+
+.d-flex {
+  display: flex;
+  flex-direction: row;
+}
+
+.d-flex > .flex-item {
+  flex: auto;
+}
+
+.d-flex > .flex-item2 {
+  flex: 2;
+}
+
+.bloc {
+  margin-top: 147px;
+}
+
+.inline-bloc {
+  display: inline-block;
+}
+
+.page1 .btn {
+  width: 510px;
+}
+
+.page2 .bloc {
+  margin-bottom: 30px;
+  color: #59432f;
+  font-family: 'monda';
+  background-color: white;
+  font-size: 60px;
+}
+
+.page2 .btn {
+  font-size: 22px;
+  margin: 10px;
+  width: 17%;
+  max-width: 17%;
+}
+
+.page2 .btn:hover {
+  background-color: #59432f30;
+}
+
+.page2 .bi {
+  font-size: 8rem;
+}
+
+.page3 .label {
+  display: inline-block;
+  margin-right: 2em;
+  margin-bottom: 1em;
+  width: 25%;
+}
+
+.page3 .input-bloc {
+  display: inline-block;
+  width: 50%;
+  vertical-align: text-top;
+}
+
+.page3 input {
+  width: 50%;
+  padding: 5px;
+  border-radius: 5px;
+  border: 2px solid #59432f80;
+}
+
+.page3 .input-bloc input{
+  width: unset;
+}
+
+.page3 .input-bloc .contact {
+  width: 50%;
+}
+
+.page3 .btn {
+  font-size: 18px;
+  margin: 10px;
+  width: 10em;  
+  border: 3px solid #59432f;
+}
+
+.page4 .item {
+  margin: 20px;
+  border: #59432f30 solid 3px;
+  border-radius: 10px;
+}
+
+.page4 .bi {
+  font-size: 30px;
+}
+
+.page4 .item > div {
+  display: inline-block;
+  margin: 10px;
+}
+
+.page4 .label {
+  size:14px;
+  color: #59432f60;
+}
+
+.page4 .image {
+  width: 5%;
+}
+
+.page4 .quand {
+  width: 10%;
+}
+
+.page4 .ou {
+  width: 15%;
+}
+
+.page4 .description {
+  width: 30%;
+}

@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Objets trouvés</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <script src="https://unpkg.com/alpinejs" defer></script>
+    <script src="script.js">
+    </script>
+    <img src="logo.png" alt="logo" class="logo">
+
+    <div x-data="{ page: 'welcome', item:'?' }" class="page1">
+        <!-- Première page -->
+        <div x-show="page=='welcome'">
+            <div class="text-center bloc">
+                <div>
+                    <button class="btn btn" @click="page='found'">J'ai trouvé...</button>
+                </div>
+                <div>
+                    <button class="btn btn margin-wide" @click="page='search'">Je cherche...</button>
+                </div>
+            </div>
+        </div>
+
+        <div x-show="page=='found'||page=='search'" class="page2">
+            <div class="text-center bloc">
+                J'ai <span x-text="page=='found' ? 'trouvé' : 'perdu'"></span>...
+            </div>
+            <div class="d-flex">
+                <button class="btn flex-item" @click="page=page=='found' ? 'found-detail':'search-list'; item='sac'">
+                    <div class="text-center">
+                        <i class="bi bi-backpack3 green"></i>
+                    </div>
+                    <div>sac / trousse</div>
+                </button>
+                <button class="btn flex-item" @click="page=page=='found' ? 'found-detail':'search-list'; item='vetement'">
+                    <div class="text-center">
+                        <i class="bi bi-incognito pink"></i>
+                    </div>
+                    <div>vêtement / accessoir</div>
+                </button>
+                <button class="btn flex-item" @click="page=page=='found' ? 'found-detail':'search-list'; item='info'">
+                    <div class="text-center">
+                        <i class="bi bi-earbuds green"></i>
+                    </div>
+                    <div>informatique</div>
+                </button>
+                <button class="btn flex-item" @click="page=page=='found' ? 'found-detail':'search-list'; item='carte'">
+                    <div class="text-center">
+                        <i class="bi bi-person-vcard pink"></i>
+                    </div>
+                    <div>carte</div>
+                </button>
+                <button class="btn flex-item" @click="page=page=='found' ? 'found-detail':'search-list'; item='autre'">
+                    <div class="text-center">
+                        <i class="bi bi-cone-striped green"></i>
+                    </div>
+                    <div>autre</div>
+                </button>
+            </div>
+        </div>
+        <div x-show="page=='found-detail'" class="page3" x-data="{ou:'', quand:'', description:'', contact:'', dest:'moi', sent:false}">
+            <div x-show="!sent">
+                <div class="bloc">
+                    <span class="text-end label">
+                        où
+                    </span>
+                    <input type="text" x-model="ou">
+                </div>
+                <div>
+                    <span class="text-end label">
+                        quand
+                    </span>
+                    <input type="date" x-model="quand">
+                </div>
+                <div>
+                    <span class="text-end label">
+                        description
+                    </span>
+                    <input type="text" x-model="description">
+                </div>
+                <div>
+                    <span class="text-end label">
+                        contact
+                    </span>
+                    <div class="input-bloc">
+                        <div>
+                            <input type="radio" name="dest" value="moi" x-model="dest">
+                            <input type="text" class="contact" x-model="contact" x-on:click="dest='moi'">
+                        </div>
+                        <div>
+                            <input type="radio" id="accueil" name="dest" value="accueil" x-model="dest">
+                            <label for="accueil">Accueil</label>                            
+                        </div>
+                        <div>
+                            <input type="radio" id="bureau" name="dest" value="bureau" x-model="dest">
+                            <label for="bureau">Bureau de vie</label>                            
+                        </div>                    
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <button class="btn" @click="sent=true">Envoyer</button>
+                </div>
+            </div>
+            <div x-show="sent">
+                <div class="bloc text-center">
+                    <h1>Merci !</h1>
+                </div>
+                <div class="bloc dimmed">
+                    <div>ou : <span x-text="ou"></span></div>
+                    <div>quand : <span x-text="quand"></span></div>
+                    <div>description : <span x-text="description"></span></div>
+                    <div>contact : <span x-text="contact"></span></div>
+                    <div>dest : <span x-text="dest"></span></div>
+                </div>
+            </div>
+        </div>
+        <template x-if="page=='search-list'">
+            <div x-init="lists=getItems(item)" class="page4">
+                <h1 class="text-center">Voici la liste des objets trouvés</h1>
+                <template x-for="found in lists">
+                    <div class="item">
+                        <div class="image">
+                            <i x-show="item === 'sac'" class="bi bi-backpack3 green"></i>
+                            <i x-show="item === 'vetement'" class="bi bi-incognito pink"></i>
+                            <i x-show="item === 'info'" class="bi bi-earbuds green"></i>
+                            <i x-show="item === 'carte'" class="bi bi-person-vcard pink"></i>
+                            <i x-show="item === 'autre'" class="bi bi-cone-striped green"></i>
+                        </div>
+                        <div class="quand">
+                            <div class="label">quand</div>
+                            <span x-text="found.quand"></span>&nbsp;
+                        </div>
+                        <div class="ou">
+                            <div class="label">où</div>
+                            <span x-text="found.contact ?? ''"></span>&nbsp;
+                        </div>
+                        <div class="description">
+                            <div class="label description">description</div>
+                            <span x-text="found.description ?? ''"></span>&nbsp;
+                        </div>
+                        <div class="contact">
+                            <div class="label">contacter</div>
+                            <span x-text="found.contact"></span>&nbsp;
+                        </div>
+                    </div>
+                </template>            
+            </div>
+        </template>
+    </div>
+  </body>
+</html>
