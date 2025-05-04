@@ -133,3 +133,13 @@ On appelle la fonction getItems() qu'on a défini dans un fichier `script.js` et
 Autre nouveauté : la variable `lists` contient un tableau d'élément. Pour parcourir le tableau, on utilise `x-for`. Le bloc à l'intérieur du x-for sera répété autant de fois qu'il y a des éléments dans le tableau. Chaque élément est placé à l'intérieur d'une nouvelle variable (appelée `found` ici).
 
 Côté css, seule nouveauté : `.page4 .item > div` ça veut dire "tous les divs, à l'intérieur d'un objet avec la class item, juste en dessous. Le inline-bloc évite le retour à la ligne.
+
+
+ ## Annexe
+
+Voici les références à garder sous le coude :
+
+AlpineJS : (https://alpinejs.dev/)
+Pour les icones : (https://icons.getbootstrap.com/)
+Le HTML et le CSS : (https://developer.mozilla.org/fr/docs/Web/HTML)
+Les fonts : (https://fonts.google.com/)
